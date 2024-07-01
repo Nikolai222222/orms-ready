@@ -45,5 +45,73 @@
             {% endif %}
         </div>
     </div>
+    <style>
+        body {
+            background-color: rgb(196, 195, 195);
+            font-family: Arial, sans-serif; 
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 80%; 
+            max-width: 600px; 
+            margin: 20px auto; 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 5px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+       }
+
+        form pre {
+            margin-bottom: 15px; 
+        }
+
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="email"],
+        form select {
+            width: calc(60% - 10px); 
+            padding: 8px; 
+            margin-bottom: 10px; 
+            border: 1px solid #000000; 
+            border-radius: 3px; 
+            box-sizing: border-box; 
+        }
+
+        form input[type="submit"] {
+            background-color: #7c7c7c; 
+            color: white; 
+            border: none; 
+            padding: 12px 20px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin-top: 10px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            transition: background-color 0.9s ease; 
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #000000; 
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        #idMensajes {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+
 </body>
 </html>
