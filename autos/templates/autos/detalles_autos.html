@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Auto</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            text-align: center;
+        }
+
+        .details p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #2196F3;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button-container a:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ auto.nombre }}</h1>
+        <img src="{{ auto.imagen.url }}" alt="{{ auto.nombre }}">
+        <div class="details">
+            <p><strong>Marca:</strong> {{ auto.marca }}</p>
+            <p><strong>Modelo:</strong> {{ auto.modelo }}</p>
+            <p><strong>Año:</strong> {{ auto.año }}</p>
+            <p><strong>Precio:</strong> {{ auto.precio }}</p>
+            <p><strong>Descripción:</strong> {{ auto.descripcion }}</p>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'autos:lista_autos' %}">Volver a la Lista</a>
+        </div>
+    </div>
+</body>
+</html>
