@@ -1,10 +1,8 @@
 class Carro:        
     def __init__(self,request):
-        #Almacenar la peticion actual para usarla mas adelante
         self.request=request
         self.session=request.session
-        carro=self.session.get("carro")#Construir carro de la compra para esta sesion
-        #Carro va a ser un diccionario
+        carro=self.session.get("carro")
         if not carro:
             carro=self.session["carro"]={}
         self.carro=carro
@@ -23,7 +21,7 @@ class Carro:
                 if key==str(producto.id):
                     value["cantidad"]= value["cantidad"]+1
                     value["precio"]=float(value["precio"])+producto.precio
-                    break#Ya no recorras mas
+                    break
         self.guardar_carro()
     
     def guardar_carro(self):
@@ -31,7 +29,7 @@ class Carro:
         self.session.modified=True
         
     def eliminar(self,producto):
-        #primer ver si existe para poder eliminar
+      
         producto.id=str(producto.id)
         if producto.id in self.carro:
             del self.carro[producto.id]
