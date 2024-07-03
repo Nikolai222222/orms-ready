@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/autos/'  
+LOGOUT_REDIRECT_URL = 'autos/'
+
 
 # Application definition
 
@@ -39,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clientes',
     'autos',
+    'carro',
+    'registro',
     
 ]
 

@@ -1,50 +1,28 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from carro.models import Carro
+from autos.models import Auto
 
-from .carro import Carro
-from tienda.models import Producto
+@login_required
+def agregar_al_carrito(request, auto_id):
+    auto = get_object_or_404(Auto, id=auto_id)
+    carro, created = Carro.objects.get_or_create(usuario=request.user)
+    carro.autos.add(auto)
+    return redirect('carro:ver_carrito')
 
-# Create your views here.
+@login_required
+def ver_carrito(request):
+    carro, created = Carro.objects.get_or_create(usuario=request.user)
+    context = {'carro': carro}
+    return render(request, 'carro/ver_carrito.html', context)
 
-def agregar_producto(request, producto_id):
-    
-    carro = Carro(request)
-    
-    #Con esto obtenemos ya el producto que queremos 
-    #agregar al carro
-    producto=Producto.objects.get(id=producto_id)
-    imagen_url = producto.imagen.url
-    
-    print(carro)
-            
-    #Ahora hay que agregar este producto al carro
-    carro.agregar(producto=producto)
-    
-    return redirect("Tienda")
+def lista_autos(request):
+    autos = Auto.objects.all()
+    return render(request, 'autos/lista_autos.html', {'autos': autos})
 
-def eliminar_producto(request, producto_id):
-    
-    #Creamos el carro
-    carro=Carro(request)
-    
-    producto=Producto.objects.get(id=producto_id)
-    
-    carro.eliminar(producto=producto)
-    
-    return redirect("Tienda")
-    
-def restar_producto(request, producto_id):
-    
-    carro=Carro(request)
-    
-    producto=Producto.objects.get(id=producto_id)
-    
-    carro.restar_producto(producto=producto)
-    
-    return redirect("Tienda")
-
-def limpiar_carro():
-    
-    carro=Carro(request)
-    carro.limpiar_carro()
-    
-    return redirect("Tienda")
+@login_required
+def eliminar_del_carrito(request, auto_id):
+    auto = get_object_or_404(Auto, id=auto_id)
+    carro = get_object_or_404(Carro, usuario=request.user)
+    carro.autos.remove(auto)
+    return redirect('carro:ver_carrito')
