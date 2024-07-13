@@ -2,6 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from carro.models import Carro
 from autos.models import Auto
+from django.contrib.auth import logout as auth_logout
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.contrib.auth import logout
+
 
 
 @login_required

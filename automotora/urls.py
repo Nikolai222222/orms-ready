@@ -11,6 +11,7 @@ urlpatterns = [
     path('autos/', include("autos.urls")),
     path('carro/', include('carro.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='registro/login.html'), name='login'), 
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
