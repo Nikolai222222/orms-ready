@@ -175,6 +175,30 @@
             font-weight: 900;
             font-size: xx-large;
         }
+        video {
+            border-radius: 15px;
+        }
+        .content-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .info-container {
+            background-color: rgb(66, 66, 66);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(95, 95, 95, 0.1);
+            max-width: 300px;
+            color: white;
+            
+        }
+        .content-reverse {
+            flex-direction: row-reverse;
+        }
+        .rounded-video {
+    border-radius: 15px; 
+}
         </style>
     </head>
     <body>
@@ -255,6 +279,31 @@
             {% block content %}
             {% endblock %}
         </div>
+
+
+        <div class="content-container">
+            <div class="video-container">
+                <video width="800" height="450" controls autoplay muted>
+                    <source src="/autos/video1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="info-container">
+                <h3>BMW E92</h3>
+                <p>The V8 engine, dubbed S65, was based on the S85 V10 used in the 2004 to 2010 E60 M5, with minor changes to improve reliability and reduce weight. It spewed out 414 horsepower at a dizzyingly high 8,400 rpm and 295 pound-feet of torque at a still-kind-of-high 3,900 rpm.</p>
+            </div>
+        </div>
+
+        <div class="content-container content-reverse">
+            <video width="800" height="350" controls autoplay muted>
+                <source src="/autos/video2.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+            <div class="info-container">
+                <h3>JDM Cars</h3>
+                <p>The term "Japanese domestic market" ("JDM") refers to Japan's home market for vehicles and vehicle parts. Japanese owners contend with a strict motor vehicle inspection and grey markets. JDM is also used as a term colloquially to refer to cars produced in Japan but sold in other countries.</p>
+            </div>
+        </div>
+
 
 
 
