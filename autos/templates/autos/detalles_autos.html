@@ -122,6 +122,10 @@
         </div>
         <div class="button-container">
             <a href="{% url 'autos:lista_autos' %}">Volver a la Lista</a>
+            <form method="post" action="{% url 'carro:agregar_al_carrito' auto.id %}" style="display:inline-block;">
+                {% csrf_token %}
+                <button type="submit">Agregar al Carrito</button>
+            </form>
         </div>
     </div>
 

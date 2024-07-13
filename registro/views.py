@@ -1,19 +1,20 @@
+# views.py
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login as auth_login
-from django.urls import reverse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
-def login(request):
+def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            auth_login(request, form.get_user())
-            # Redirige al usuario a la página 'autos' después de iniciar sesión
-            return redirect('autos')
-    else:
-        form = AuthenticationForm()
-    
-    return render(request, 'registro/login.html', {'form': form})
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'registro/login.html', {'error': 'Invalid credentials'})
+    return render(request, 'registro/login.html')
 
-def lista_autos(request):
-    return render(request, 'autos/lista_autos.html')
+@login_required
+def home_view(request):
+    return render(request, 'registro/home.html')

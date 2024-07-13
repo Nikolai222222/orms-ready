@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from carro.models import Carro
 from autos.models import Auto
 
+
 @login_required
 def agregar_al_carrito(request, auto_id):
     auto = get_object_or_404(Auto, id=auto_id)
