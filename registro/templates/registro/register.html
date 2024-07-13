@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Registrarse</title>
     <style>
         body {
-            background-image: url(/registro/carretera-de-anochecer-nubes-y-bosque-3040.jpg);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
+            background-image: url(/registro/carretera-de-anochecer-nubes-y-bosque-3040.jpg);            display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        .login-container {
+        .register-container {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
@@ -26,7 +25,7 @@
             text-align: center;
         }
         h2 {
-            color: #000000;
+            color: #4e54c8;
             margin-bottom: 20px;
         }
         .form-group {
@@ -46,7 +45,7 @@
             box-sizing: border-box;
         }
         .button {
-            background-color: #383d3d;
+            background-color: #353535;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -61,20 +60,18 @@
         .button:hover {
             background-color: #4248b3;
         }
-        .register-link {
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Iniciar Sesión</h2>
+    <div class="register-container">
+        <h2>Registro de Usuario</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="button">Iniciar Sesión</button>
+            <button type="submit" class="button">Registrarse</button>
         </form>
-        <p>¿No tienes una cuenta? <a href="{% url 'registrarse' %}" class="button">Regístrate aquí</a></p>
+        <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="button">Inicia sesión aquí</a></p>
     </div>
 </body>
 </html>
+
