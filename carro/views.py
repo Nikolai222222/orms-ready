@@ -3,18 +3,19 @@ from django.contrib.auth.decorators import login_required
 from carro.models import Carro
 from autos.models import Auto
 from django.contrib.auth import logout as auth_logout
-from django.contrib import messages
 from django.shortcuts import redirect
-from django.contrib.auth import logout
+from django.http import JsonResponse
 
 
 
 @login_required
 def agregar_al_carrito(request, auto_id):
+    if not request.user.is_authenticated:
+        return JsonResponse({'success': False, 'message': 'Necesitas iniciar sesión para agregar autos al carrito.'})
     auto = get_object_or_404(Auto, id=auto_id)
     carro, created = Carro.objects.get_or_create(usuario=request.user)
     carro.autos.add(auto)
-    return redirect('carro:ver_carrito')
+    return JsonResponse({'success': True, 'cart_count': carro.autos.count()})
 
 @login_required
 def ver_carrito(request):

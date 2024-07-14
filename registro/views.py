@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import RegistroForm
+from django.contrib.auth import logout
 
 def login_view(request):
     if request.method == 'POST':
@@ -29,3 +30,6 @@ def registro(request):
         form = RegistroForm()
     return render(request, 'registro/register.html', {'form': form})
 
+def logout_view(request):
+    logout(request)
+    return redirect('autos')

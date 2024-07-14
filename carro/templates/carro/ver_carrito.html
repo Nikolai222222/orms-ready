@@ -26,6 +26,10 @@
         .navbar-brand, .nav-link {
             color: #000000 !important;
         }
+        .nav-link {
+                margin-right: 10px;
+                font-size: large ;
+            }
 
         .container {
             max-width: 800px;
@@ -152,14 +156,14 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Autos del Mar</a>
+            <a class="navbar-brand" href="{% url 'autos' %}">Autos del Mar</a>
             <div class="d-flex">
-                <a class="nav-link d-inline" href="#contacto">Contacto</a>
+                <a class="nav-link d-inline" href="#contacto"><i class="fa-solid fa-phone"></i> Contacto </a>
                 {% if user.is_authenticated %}
-                    <span class="nav-link d-inline">Hola, {{ user.username }}</span>
-                    <a class="nav-link d-inline" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    <span class="nav-link d-inline"><i class="fa-regular fa-face-smile-wink"></i> Hola, {{ user.username }}</span>
+                    <a class="nav-link d-inline" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
                 {% else %}
-                    <a class="nav-link d-inline" href="{% url 'login' %}">Iniciar Sesión</a>
+                    <a class="nav-link d-inline" href="{% url 'login' %}"><i class="fa-solid fa-user"></i> Iniciar Sesión</a>
                 {% endif %}
                 <div class="cart-icon">
                     <a href="{% url 'carro:ver_carrito' %}">

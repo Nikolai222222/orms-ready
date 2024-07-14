@@ -24,6 +24,12 @@
             
            
         }
+        .nav-link {
+                margin-right: 10px;
+                font-size: large ;
+                font-family: 'Racing Games', sans-serif;
+            }
+    
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -91,9 +97,7 @@
             background-color: #000000;
         }
 
-        .nav-link {
-            margin-right: 10px;
-        }
+        
         #contacto{
             text-align: center;
         }
@@ -109,12 +113,21 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/autos/">Autos del Mar</a>
-            <div>
-                
-                <a class="nav-link d-inline" href="#contacto">Contacto</a>
-                <a class="nav-link d-inline" href="{% url 'login' %}">Iniciar Sesión</a>
-                </a>
+            <a class="navbar-brand" href="{% url 'autos' %}">Autos del Mar</a>
+            <div class="d-flex">
+                <a class="nav-link d-inline" href="#contacto"><i class="fa-solid fa-phone"></i> Contacto </a>
+                {% if user.is_authenticated %}
+                    <span class="nav-link d-inline"><i class="fa-regular fa-face-smile-wink"></i> Hola, {{ user.username }}</span>
+                    <a class="nav-link d-inline" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
+                {% else %}
+                    <a class="nav-link d-inline" href="{% url 'login' %}"><i class="fa-solid fa-user"></i> Iniciar Sesión</a>
+                {% endif %}
+                <div class="cart-icon">
+                    <a href="{% url 'carro:ver_carrito' %}">
+                        <i class="fas fa-shopping-cart fa-2x"></i>
+                        <span class="badge" id="cart-count">{{ request.session.carrito|length }}</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -136,9 +149,7 @@
         </div>
         <div class="button-container">
             <a href="{% url 'autos:lista_autos' %}">Volver a la Lista</a>
-            <form method="post" action="{% url 'carro:agregar_al_carrito' auto.id %}" style="display:inline-block;">
                 {% csrf_token %}
-                <button type="submit">Agregar al Carrito</button>
             </form>
         </div>
     </div>
