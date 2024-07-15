@@ -10,7 +10,7 @@
 #### .\miambiente\Scripts\activate
 #### py manage.py runserver
 #### http://127.0.0.1:8000/login/
-#### Iniciar Sesion Dato: Usuario: Nikolai Contraseña: 123456
+#### Iniciar Sesion Dato: Usuario: nikolai Contraseña: 123456
 #### Una vez inicie la sesion el login lo tira a la main page
 
 #### por otro lado el link http://127.0.0.1:8000/admin/ lo manda al panel de administrador  el user y contraseña es el mismo y ahi podra encontrar el paner para poder agregar los vehiculo
